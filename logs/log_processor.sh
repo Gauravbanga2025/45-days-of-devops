@@ -1,0 +1,19 @@
+#!/bin/bash
+
+FILE="server.log"
+
+echo "----Starting Live Log Processing-----"
+
+while read -r LINE; do
+  
+    if echo "$LINE" | grep -qiE "CrashLoopBackoff|Timeout"; then
+      echo "Critical Error Detected: $LINE"
+
+    else
+       echo "Detail Info  $LINE"
+
+    fi 
+
+done < "$FILE"
+
+echo " -----Log Processing Complete------ "

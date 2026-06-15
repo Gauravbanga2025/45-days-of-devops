@@ -1,0 +1,84 @@
+In Networking We Check
+
+1.We Checked about the basic commands like ping to check if a server is reachable or not, curl to check like curl -I http://google.com to reach its destination or not and traceroute to track the route that it follow to reach its destination like traceroute google.com then it will check how many hops it takes to leave the current server to reach its destination host suppose if a address failed at 5th hop then we know what is the issue
+
+ubuntu@new:~/45-days-of-devops/networking$ ping google.com
+PING google.com (142.250.207.238) 56(84) bytes of data.
+64 bytes from lcboma-bi-in-f14.1e100.net (142.250.207.238): icmp_seq=1 ttl=119 time=0.806 ms
+64 bytes from lcboma-bi-in-f14.1e100.net (142.250.207.238): icmp_seq=2 ttl=119 time=0.798 ms
+64 bytes from lcboma-bi-in-f14.1e100.net (142.250.207.238): icmp_seq=3 ttl=119 time=0.873 ms
+64 bytes from lcboma-bi-in-f14.1e100.net (142.250.207.238): icmp_seq=4 ttl=119 time=0.845 ms
+64 bytes from lcboma-bi-in-f14.1e100.net (142.250.207.238): icmp_seq=5 ttl=119 time=0.839 ms
+64 bytes from lcboma-bi-in-f14.1e100.net (142.250.207.238): icmp_seq=6 ttl=119 time=0.836 ms
+64 bytes from lcboma-bi-in-f14.1e100.net (142.250.207.238): icmp_seq=7 ttl=119 time=0.867 ms
+^C
+--- google.com ping statistics ---
+7 packets transmitted, 7 received, 0% packet loss, time 6109ms
+rtt min/avg/max/mdev = 0.798/0.837/0.873/0.026 ms
+
+ubuntu@new:~/45-days-of-devops/networking$ curl -I http://google.com 80
+HTTP/1.1 301 Moved Permanently
+Location: http://www.google.com/
+Content-Type: text/html; charset=UTF-8
+Content-Security-Policy-Report-Only: object-src 'none';base-uri 'self';script-src 'nonce--tC8bXuXoxStHpWM3Jpq4A' 'strict-dynamic' 'report-sample' 'unsafe-eval' 'unsafe-inline' https: http:;report-uri https://csp.withgoogle.com/csp/gws/other-hp
+Date: Mon, 11 May 2026 12:33:34 GMT
+Expires: Wed, 10 Jun 2026 12:33:34 GMT
+Cache-Control: public, max-age=2592000
+Server: gws
+Content-Length: 219
+X-XSS-Protection: 0
+X-Frame-Options: SAMEORIGIN
+
+ubuntu@new:~/45-days-of-devops/networking$ traceroute google.com
+traceroute to google.com (142.250.207.238), 30 hops max, 60 byte packets
+ 1  140.91.204.38 (140.91.204.38)  0.156 ms 140.91.204.48 (140.91.204.48)  0.124 ms 140.91.204.32 (140.91.204.32)  0.118 ms
+ 2  142.250.173.191 (142.250.173.191)  11.770 ms  11.746 ms  11.723 ms
+ 3  142.250.173.190 (142.250.173.190)  0.813 ms * *
+ 4  192.178.110.223 (192.178.110.223)  1.342 ms *  1.296 ms
+ 5  172.253.77.20 (172.253.77.20)  1.273 ms 142.250.60.134 (142.250.60.134)  1.250 ms 72.14.239.247 (72.14.239.247)  0.858 ms
+ 6  del12s11-in-f14.1e100.net (142.250.207.238)  0.737 ms  0.856 ms 72.14.239.247 (72.14.239.247)  0.808 ms
+
+2.TCP vs UDP : In This we saw that TCP is reliable, ordered and Slow and broadcasting not possible and its send the receipt of every data packet while UDP is not reliable, not in ordered way but fast, broadcasting is possible and did not send the receipt of data packet
+3.Also Check the ipaddr or ip a to check the internal ip’s and check sudo ss -tulnp to check which port is listening and run on which protocol like TCP or UPD 
+4.DNS Pipeline : Browser Cache => Local DNS => Hostsfile => RNS => TLD => Authoritative Nameservers => SOA => Find The IP Address => Send it to Sender Machine
+5.Find Ip address and Query Time of any domain with dig like 
+ubuntu@new:~/45-days-of-devops/networking$ dig google.com
+
+; <<>> DiG 9.18.39-0ubuntu0.24.04.3-Ubuntu <<>> google.com
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 53112
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 65494
+;; QUESTION SECTION:
+;google.com.                    IN      A
+
+;; ANSWER SECTION:
+google.com.             115     IN      A       142.250.206.174
+
+;; Query time: 1 msec
+;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)
+;; WHEN: Mon May 11 12:44:47 UTC 2026
+;; MSG SIZE  rcvd: 55
+6.TCP/IP and OSI Model 
+In TCP/IP four layers are there like
+Application Layer : What to send (Https, SSH, FTP)
+Transport: How to send (TCP vs UDP)
+Network: Where to Send the IP Address
+Data Link: Ethernet, Wifi etc 
+
+OSI Model: APSTNDP
+Application
+Presentation
+Session
+Transport
+Network Access
+Data Link
+Physical Layer
+
+
+
+Note: If a destination reach by Ip address and ping is also working but website is not open so the issue is DNS (Domain Name Server) to Check The Zone Editor of the domain to identify which record is failing
+

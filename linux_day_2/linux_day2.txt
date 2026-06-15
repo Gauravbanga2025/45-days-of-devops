@@ -1,0 +1,6 @@
+# Linux Day 2
+
+1.Check the usage of chmod for permission management of user to any file or directory like chmod 777 all access to all user, chmod 755(Complete access to Owner rwx and r_x  access to group and same r_x access to others means that is viewable to public)
+2.Add New User By Sudo useradd -m username (-m stands for provide separate home directory for user and also set the passwd with sudo passwd) and also add group by sudo groupadd group name and assign user into that group with sudo usermod -aG groupname username and add user to sudoers group by sudo usermod -aG sudo username
+3.Check the user details like username, UID, Group Name, Comment and shell by sudo cat /etc/password and for group sudo cat /etc/group and check particular user group with like groups username and for checking the encrypted password sudo cat /etc/shadow
+

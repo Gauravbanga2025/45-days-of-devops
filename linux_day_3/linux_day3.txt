@@ -1,0 +1,11 @@
+# In Linux day 3
+
+1.First we check how Process Management works first if we have to check the Ram, CPU in real time dashboard then use top  for better visibility and live tracking of RAM, CPU and Scrollable View use htop 
+2.Usage of ps aux | grep <name> like docker to find anything inside the file and use find to find files inside the directories
+3.Kill the Process by kill <pid> if stop it gracefully and if  stop forcefully just use kill -9 pid 
+4.For Storage Management if Check The System Level Space use df -h and if check particular directory and file spare we can use du -sh <file or directory>
+5.To Check the Ram in Human Readable Format use free -h 	
+6.In This If you want to find why any service failed to start you can find by sudo journalctl -u docker.service etc or start or stop it by using sudo systemctl start nginx, docker etc
+
+
+

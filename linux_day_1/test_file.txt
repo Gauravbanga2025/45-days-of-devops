@@ -1,0 +1,13 @@
+# This is a sample file
+172.17.0.1 - - [15/May/2026:10:00:01 +0000] "GET /index.html HTTP/1.1" 200 612 "-" "Mozilla/5.0"
+172.17.0.1 - - [15/May/2026:10:00:05 +0000] "POST /api/login HTTP/1.1" 401 24 "-" "curl/7.68.0"
+/docker-entrypoint.sh: Looking for shell scripts in /docker-entrypoint.d/
+/docker-entrypoint.sh: Launching /docker-entrypoint.d/10-listen-on-ipv6-by-default.sh
+2026-05-15 10:05:12 [INFO] Starting application server on port 8080...
+/docker-entrypoint.sh: Looking for shell scripts in /docker-entrypoint.d/
+/docker-entrypoint.sh: Launching /docker-entrypoint.d/10-listen-on-ipv6-by-default.sh
+2026-05-15 10:05:12 [INFO] Starting application server on port 8080...
+2026-05-15 10:10:45 [ERROR] Connection refused: Could not connect to database at db_host:5432
+2026-05-15 10:10:46 [WARNING] Retrying database connection in 5 seconds...
+{"log":"GET /health HTTP/1.1 200\n","stream":"stdout","time":"2026-05-15T10:12:00.123456Z"}
+{"log":"Error: file not found\n","stream":"stderr","time":"2026-05-15T10:12:05.987654Z"}
