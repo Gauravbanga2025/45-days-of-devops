@@ -1,0 +1,9 @@
+# Ignore secret environment variables
+.env
+*.pem
+*.key
+
+# Ignore system cache and temporary edit logs
+*.swp
+*.log
+.DS_Store
