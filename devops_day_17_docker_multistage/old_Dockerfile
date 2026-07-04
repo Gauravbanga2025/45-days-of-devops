@@ -1,0 +1,33 @@
+# STAGE 1: The Build Environment (Heavy)
+
+FROM node:18-alpine AS builder
+WORKDIR /app
+
+
+# Copy Package configurations and install ALL dependencies
+
+COPY package*.json ./
+RUN  npm install
+
+
+# Copy source code and build the static production assets
+
+COPY . .
+RUN npm run build
+# ( This outputs a tiny, highly-optimized static folder named /app/dist or /app/build )
+
+
+#==========================================================================
+
+# STAGE 2: The Production Runtime (Ultra-Lightweight)
+
+FROM nginx:alpine
+WORKDIR /usr/share/nginx/html
+
+# Clean out default files and copy ONLY the compiled assets from Stage 1
+
+RUN rm -rf ./*
+COPY --from=builder /app/dist .
+
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]

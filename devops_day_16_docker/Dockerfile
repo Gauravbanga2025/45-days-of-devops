@@ -1,0 +1,21 @@
+# Step 1: Use a Super Lightweight Alpine Linux Base Image
+
+FROM alpine:latest
+
+
+# Step 2: Set The Workspace Inside the Container
+
+WORKDIR /usr/src/app
+
+# Step 3: Copy Our Local Script into the Container Directory
+
+COPY app.sh . 
+
+
+# Step 4: Give the Script Execution 
+
+RUN chmod +x app.sh
+
+# Step 5 Tell the Container What to Execute on Startup
+
+CMD ["./app.sh"]

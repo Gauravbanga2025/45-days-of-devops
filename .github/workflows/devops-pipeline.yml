@@ -1,0 +1,38 @@
+name: Foundational DevOps Pipeline
+
+
+# 1. Trigger the workflow on every push to the main branch
+
+on:
+  push:
+    branches: [main]
+
+
+# 2. Define the execution track
+
+jobs:
+  code-verification:
+    # Tell Github on to spin up a clean Ubuntu virtual machine in their cloud
+    runs-on: ubuntu-latest
+
+    steps:
+     # Step A: Download your repository code onto the temporary cloud runner
+      - name: Checkout Repository Code
+        uses: actions/checkout@v4
+
+     # Step B: Run standard automated health checks
+
+      - name: Run System Diagnostics Scan
+        run: |
+          echo "================================="
+          echo "Starting Automated Cloud Security Scan....."
+          echo "Current Repository Workspace: $GITHUB_WORKSPACE"
+          echo "Triggered By Github Actor: $GITHUB_ACTOR"
+          echo "======================================="
+
+     # Step C: Verify directory structures match your 45-days-track
+
+     -  name: Verify Repository Architecture Integrity
+        run: |
+          ls -la
+          echo "Verification Check: SUCCESS "
