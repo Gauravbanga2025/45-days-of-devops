@@ -12,7 +12,7 @@ on:
 
 jobs:
   code-verification:
-    # Tell Github on to spin up a clean Ubuntu virtual machine in their cloud
+    # This must have exactly 4 spaces to align under the job block
     runs-on: ubuntu-latest
 
     steps:
