@@ -16,6 +16,31 @@ jobs:
       - name: Checkout Repository Code
         uses: actions/checkout@v4
 
+      # Step 1: Log in to Docker Hub using Github Secrets Securely
+      - name: Log into Docker Hub
+        uses: docker/login-actions@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      # Step 2: Set up Docker Buildx (Advanced builder engine engine for caching)
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-actions@v3
+
+
+      # Step 3: Build the multi-stage image and push it to public registry
+
+      - name: Build and Push Docker Image
+        uses: docker/build-push-action@v5
+        with:
+          # Tell it to look inside our day for multi-stage folder
+          context: ./devops_day_17_docker_multistage
+          file: ./devops_day_17_docker_multistage/Dockerfile
+          push: true
+          # Tagging the image under Docker Hub username
+          tags: gauravbanga/multistage-test:latest
+
       - name: Run System Diagnostics Scan
         run: |
           echo "================================="
