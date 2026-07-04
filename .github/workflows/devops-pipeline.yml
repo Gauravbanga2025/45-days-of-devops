@@ -1,26 +1,20 @@
 name: Foundational DevOps Pipeline
 
-
 # 1. Trigger the workflow on every push to the main branch
-
 on:
   push:
     branches: [main]
 
-
 # 2. Define the execution track
-
 jobs:
   code-verification:
-    # Tell Github on to spin up a clean Ubuntu virtual machine in their cloud
+    # This must have exactly 4 spaces to align under the job block
     runs-on: ubuntu-latest
 
     steps:
-      # Step A: Download your repository code onto the temporary cloud runner
+      # Each dash (-) inside steps must align perfectly under the 's' of steps
       - name: Checkout Repository Code
         uses: actions/checkout@v4
-
-      # Step B: Run standard automated health checks
 
       - name: Run System Diagnostics Scan
         run: |
@@ -30,9 +24,7 @@ jobs:
           echo "Triggered By Github Actor: $GITHUB_ACTOR"
           echo "======================================="
 
-     # Step C: Verify directory structures match your 45-days-track
-
-     -  name: Verify Repository Architecture Integrity
+      - name: Verify Repository Architecture Integrity
         run: |
           ls -la
-          echo "Verification Check: SUCCESS "
+          echo "Verification Check: SUCCESS"
