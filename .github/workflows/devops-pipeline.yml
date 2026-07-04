@@ -16,11 +16,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-     # Step A: Download your repository code onto the temporary cloud runner
+      # Step A: Download your repository code onto the temporary cloud runner
       - name: Checkout Repository Code
         uses: actions/checkout@v4
 
-     # Step B: Run standard automated health checks
+      # Step B: Run standard automated health checks
 
       - name: Run System Diagnostics Scan
         run: |
