@@ -32,7 +32,7 @@ jobs:
      # Step B: Run Trivy Security Vulnerbility Scanner Directly on The Image
 
       - name: Run Trivy Vulnerbility Scan
-        used: aquasecurity/trivy-action@master
+        uses: aquasecurity/trivy-action@master
         with:
           image-ref: 'local-audit-image:test'
           format: 'table'
