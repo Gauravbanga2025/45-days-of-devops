@@ -41,10 +41,10 @@ jobs:
 
 
   build-and-push-registry:
-    runs-on: ubuntu@latest
+    runs-on: ubuntu-latest
 
     # This ensures the image is ONLY pushed if the security scan step runs!
-    needs: security-compliance_scan
+    needs: security-compliance-scan
 
 
     steps:
