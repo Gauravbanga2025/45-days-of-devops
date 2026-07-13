@@ -47,7 +47,7 @@ jobs:
     needs: security-compliance_scan
 
 
-    step:
+    steps:
       - name: Checkout Repository Code
         uses: actions/checkout@v4
 
